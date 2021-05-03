@@ -41,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
 
-        title: Text('大橋英路!!!'),
+        title: Text('大橋英路の安否確認アプリ!!'),
         actions: [
           Icon(Icons.add),
           Icon(Icons.share),
