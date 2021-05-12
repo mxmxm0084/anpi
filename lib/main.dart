@@ -1,3 +1,4 @@
+import 'package:anpi/main_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -9,28 +10,33 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      home:ChangeNotifierProvider<Ma>(
+      home:ChangeNotifierProvider<MainModel>(
+        create: (_) => MainModel(),
         child: Scaffold(
           appBar: AppBar(
             title: Text('コリアンダー'),
           ),
-          body: Center(
-            child: Column(
-              children: [
-                Text(
-                  kboyText,
-                  style: TextStyle(
-                    fontSize: 30,
+          body: Consumer<MainModel>(builder: (context, model, child) {
+            return Center(
+              child: Column(
+                children: [
+                  Text(
+                    model.kboyText,
+                    style: TextStyle(
+                      fontSize: 30,
+                    ),
                   ),
+                  ElevatedButton(
+                    child: Text('ボタン'),
+                    onPressed: (){
+                      //ここでなにか
+                      model.changeKboyText();
+                    },
+                   ),
+                 ],
                 ),
-                ElevatedButton(
-                  child: Text('ボタン'),
-                  onPressed: (){
-                    //ここでなにか
-                  },
-                ),
-              ],
-            ),
+              );
+            }
           ),
         ),
       ),
